@@ -1,0 +1,36 @@
+// Animation tools
+@import 'animate';
+@import 'utilities/animationduration';
+@import 'utilities/animationfillmode';
+@import 'utilities/animationname';
+
+// Auxiliary tools
+@import 'utilities/boxsizing';
+@import 'utilities/textsizeadjust';
+
+*,
+*::after,
+*::before {
+  @include box-sizing(border-box);
+  @include text-size-adjust(100%);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding: 8px;
+}
+
+.message-item {
+  background-color: rgba(21, 27, 38, .8);
+  letter-spacing: .05em;
+  padding: 1em;
+
+  @include animation-duration(1s);
+  @include animation-fill-mode(both);
+  @include animation-name(fadeIn);
+}
+
+.message-text {
+  color: #fff;
+}
