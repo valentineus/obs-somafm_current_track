@@ -34,6 +34,7 @@ function updateData(artistTrack, titleTrack) {
 
   if (artistElement.textContent !== artistTrack || titleElement.textContent !== titleTrack) {
     /* Updates text */
+    document.title = artistTrack + ' - ' + titleTrack;
     artistElement.textContent = artistTrack;
     titleElement.textContent = titleTrack;
 
