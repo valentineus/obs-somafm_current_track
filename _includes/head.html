@@ -13,8 +13,11 @@
   {% endfor %}
 
   <!-- Title / Description -->
-  <meta name="description" content="{{ page.description | default: site.description | strip_newlines | strip_html | strip | normalize_whitespace | smartify | truncate: 100 | xml_escape }}" />
-  <title>{{ page.title | default: site.title | strip_newlines | strip_html | strip | normalize_whitespace | smartify | truncate: 64 | xml_escape }}</title>
+  <meta name="description" content="{{ site.description | strip_newlines | strip_html | strip | normalize_whitespace | smartify | truncate: 100 | xml_escape }}" />
+  <title>{{ site.title | strip_newlines | strip_html | strip | normalize_whitespace | smartify | truncate: 64 | xml_escape }}</title>
+
+  <!-- Google Fonts -->
+  <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url | uri_escape }}" />
