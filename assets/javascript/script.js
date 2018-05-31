@@ -1,5 +1,46 @@
 'use strict';
 
+var client = new XMLHttpRequest();
+var radio = findGetParameter('radio');
+var url = '//somafm.com/songs/' + radio + '.xml';
+
+/* Processes response */
+client.onload = function () {
+  if (client.readyState === client.DONE) {
+    if (this.status === 200 && this.responseXML !== null) {
+      /* Gets current track */
+      var current = this.responseXML.getElementsByTagName('song')[0];
+      var artistTrack = current.getElementsByTagName('artist')[0].textContent;
+      var titleTrack = current.getElementsByTagName('title')[0].textContent;
+
+      /* Gets items on the page */
+      var displayElement = document.getElementById('display');
+      var artistElement = document.getElementById('artist');
+      var titleElement = document.getElementById('title');
+
+      if (artistElement.textContent !== artistTrack || titleElement.textContent !== titleTrack) {
+        /* Updates text */
+        artistElement.textContent = artistTrack;
+        titleElement.textContent = titleTrack;
+
+        /* Displays a pop-up window */
+        displayElement.style['animation-name'] = 'fadeIn';
+
+        setTimeout(function () {
+          /* Removes a pop-up window */
+          displayElement.style['animation-name'] = 'fadeOut';
+        }, getInterval('duration'));
+      }
+    }
+  }
+};
+
+/* Update cycle */
+setInterval(function () {
+  client.open('GET', url);
+  client.send();
+}, getInterval('interval'));
+
 /**
  * @param {String} parameterName - Variable name
  * @returns {String} Value of variable
@@ -21,53 +62,18 @@ function findGetParameter(parameterName) {
 }
 
 /**
- * @param {String} artistTrack - Artist of the track
- * @param {String} titleTrack - Name of the track
- * @description Updates the data on the page. Displays a pop-up window if the
- * data has changed.
+ * @param {String} parameterName - Variable name
+ * @returns {Number} Timer value, default 10 seconds
+ * @description Gets the settings for the specified timer.
  */
-function updateData(artistTrack, titleTrack) {
-  /* Gets items on the page */
-  var displayElement = document.getElementById('display');
-  var artistElement = document.getElementById('artist');
-  var titleElement = document.getElementById('title');
+function getInterval(parameterName) {
+  var value = findGetParameter(parameterName);
+  var interval = parseInt(value, 10);
+  var result = 10000;
 
-  if (artistElement.textContent !== artistTrack || titleElement.textContent !== titleTrack) {
-    /* Updates text */
-    artistElement.textContent = artistTrack;
-    titleElement.textContent = titleTrack;
-
-    /* Displays a pop-up window */
-    displayElement.style['animation-name'] = 'fadeIn';
-
-    setTimeout(function () {
-      /* Removes a pop-up window */
-      displayElement.style['animation-name'] = 'fadeOut';
-    }, 10000);
+  if (isNaN(interval) === false) {
+    result = interval;
   }
+
+  return result;
 }
-
-var client = new XMLHttpRequest();
-var radio = findGetParameter('radio');
-var url = '//somafm.com/songs/' + radio + '.xml';
-
-/* Processes response */
-client.onload = function () {
-  if (client.readyState === client.DONE) {
-    if (this.status === 200 && this.responseXML !== null) {
-      /* Gets current track */
-      var current = this.responseXML.getElementsByTagName('song')[0];
-      var artist = current.getElementsByTagName('artist')[0].textContent;
-      var title = current.getElementsByTagName('title')[0].textContent;
-
-      /* Updates data */
-      updateData(artist, title);
-    }
-  }
-};
-
-/* Update cycle */
-setInterval(function () {
-  client.open('GET', url);
-  client.send();
-}, 15000);
