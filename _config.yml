@@ -1,0 +1,35 @@
+# Time Zone
+timezone: "Europe/Moscow"
+
+# Catalogs
+include:
+  - "_pages"
+
+# SASS/SCSS
+sass:
+  sass_dir: "_scss"
+  style: ":compressed"
+
+# Compress HTML
+compress_html:
+  blanklines: false
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: []
+  profile: false
+  startings: []
+
+# Website address
+url: ""
+baseurl: ""
+
+# Site description
+description: "Page displays a popup window with the current playing track SomaFM radio."
+title: "Current track SomaFM"
+
+# Exceptions
+exclude:
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "LICENSE.txt"
+  - "README.md"
