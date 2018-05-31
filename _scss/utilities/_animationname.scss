@@ -1,0 +1,16 @@
+// Animation Name
+//
+// The animation-name CSS property specifies a list of animations that should
+// be applied to the selected element. Each name indicates a @keyframes at-rule
+// that defines the property values for the animation sequence.
+//
+// Values: [ none | <keyframes-name> ]
+// Default: none
+//
+// https://www.w3.org/TR/css-animations-1/#animation-name
+@mixin animation-name($value: none) {
+  -webkit-animation-name: $value;
+     -moz-animation-name: $value;
+       -o-animation-name: $value;
+          animation-name: $value;
+}
