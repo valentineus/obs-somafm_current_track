@@ -1,8 +1,8 @@
 'use strict';
 
 var client = new XMLHttpRequest();
-var radio = findGetParameter('radio');
-var url = '//somafm.com/songs/' + radio + '.xml';
+var channel = findGetParameter('channel');
+var url = '//somafm.com/songs/' + channel + '.xml';
 
 /* Processes response */
 client.onload = function () {
