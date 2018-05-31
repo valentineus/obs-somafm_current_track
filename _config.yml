@@ -20,8 +20,8 @@ compress_html:
   startings: []
 
 # Website address
-url: "https://valentineus.link/obs-somafm-current-track/"
-baseurl: ""
+url: "https://valentineus.link"
+baseurl: "/obs-somafm-current-track"
 
 # Site description
 description: "Page displays a popup window with the current playing track SomaFM radio."
