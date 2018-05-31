@@ -1,0 +1,26 @@
+// Keyframes
+//
+// Keyframes are used to specify the values for the animating properties at
+// various points during the animation. The keyframes specify the behavior of
+// one cycle of the animation; the animation may iterate zero or more times.
+//
+// Values: <keyframes-name> { <rule-list> }
+//
+// https://www.w3.org/TR/css-animations-1/#keyframes
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-o-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
