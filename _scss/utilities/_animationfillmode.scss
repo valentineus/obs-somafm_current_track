@@ -1,0 +1,15 @@
+// Animation Fill Mode
+//
+// The animation-fill-mode property defines what values are applied by the
+// animation outside the time it is executing.
+//
+// Values: none | forwards | backwards | both
+// Default: none
+//
+// https://www.w3.org/TR/css-animations-1/#animation-fill-mode
+@mixin animation-fill-mode($value: none) {
+  -webkit-animation-fill-mode: $value;
+     -moz-animation-fill-mode: $value;
+       -o-animation-fill-mode: $value;
+          animation-fill-mode: $value;
+}
