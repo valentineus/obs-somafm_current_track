@@ -1,6 +1,26 @@
 'use strict';
 
 /**
+ * @param {String} parameterName - Variable name
+ * @returns {String} Value of variable
+ * @description Searches for the value of the GET variable on the page.
+ */
+function findGetParameter(parameterName) {
+  var result = null;
+  var tmp = [];
+
+  var items = window.location.search.substr(1).split('&');
+  for (var index = 0; index < items.length; index++) {
+    tmp = items[index].split('=');
+    if (tmp[0] === parameterName) {
+      result = decodeURIComponent(tmp[1]);
+    }
+  }
+
+  return result;
+}
+
+/**
  * @param {String} artistTrack - Artist of the track
  * @param {String} titleTrack - Name of the track
  * @description Updates the data on the page. Displays a pop-up window if the
@@ -14,8 +34,8 @@ function updateData(artistTrack, titleTrack) {
 
   if (artistElement.textContent !== artistTrack || titleElement.textContent !== titleTrack) {
     /* Updates text */
-    artistElement.innerHTML = artistTrack;
-    titleElement.innerHTML = titleTrack;
+    artistElement.textContent = artistTrack;
+    titleElement.textContent = titleTrack;
 
     /* Displays a pop-up window */
     displayElement.style['animation-name'] = 'fadeIn';
@@ -28,7 +48,8 @@ function updateData(artistTrack, titleTrack) {
 }
 
 var client = new XMLHttpRequest();
-var url = 'https://somafm.com/songs/defcon.xml';
+var radio = findGetParameter('radio');
+var url = '//somafm.com/songs/' + radio + '.xml';
 
 /* Processes response */
 client.onload = function () {
