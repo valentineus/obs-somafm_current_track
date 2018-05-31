@@ -16,14 +16,21 @@
 }
 
 body {
+  background-color: transparent;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  padding: 8px;
+}
+
+.container {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .message-item {
   background-color: rgba(21, 27, 38, .8);
   letter-spacing: .05em;
+  margin: 1em;
   padding: 1em;
 
   @include animation-duration(1s);
