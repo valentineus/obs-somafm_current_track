@@ -12,7 +12,7 @@ function updateData(artistTrack, titleTrack) {
   var artistElement = document.getElementById('artist');
   var titleElement = document.getElementById('title');
 
-  if (artistElement.innerHTML !== artistTrack || titleElement.innerHTML !== titleTrack) {
+  if (artistElement.textContent !== artistTrack || titleElement.textContent !== titleTrack) {
     /* Updates text */
     artistElement.innerHTML = artistTrack;
     titleElement.innerHTML = titleTrack;
