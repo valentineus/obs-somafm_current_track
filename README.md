@@ -6,19 +6,27 @@ Uses playlists of a non-commercial radio station
 Created specially for
 [Open Broadcaster Software](https://obsproject.com/).
 
+* [Demo](https://valentineus.link/obs-somafm-current-track/?duration=7000&interval=15000&channel=defcon);
 * [Support SomaFM](https://somafm.com/support/);
-* [Demo](https://valentineus.link/obs-somafm-current-track/?radio=defcon);
 
 ## Using
 
+Example:
 ```url
-https://valentineus.link/obs-somafm-current-track/?radio=defcon
+https://valentineus.link/obs-somafm-current-track/?duration=7000&interval=15000&channel=defcon
 ```
 
-Open the page by specifying the GET parameter `radio`.
-This is necessary to the script receives the data of the desired radio.
-A list of available radio stations can be found
+Open the view page.
+Be sure to set parameter `channel`.
+Parameter `channel` configures an alert for a specific channel.
+You can see the list of all channels
 [here](https://somafm.com/listen/).
+
+Additional, optional parameters:
+* `duration` - Duration of the notification.
+Default 10 seconds, the value is in milliseconds.
+* `interval` - Refresh interval for the playlist.
+Default 10 seconds, the value is in milliseconds.
 
 ## Development
 
