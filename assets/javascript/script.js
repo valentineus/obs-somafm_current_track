@@ -23,7 +23,7 @@ function updateData(artistTrack, titleTrack) {
     setTimeout(function () {
       /* Removes a pop-up window */
       displayElement.style['animation-name'] = 'fadeOut';
-    }, 3000);
+    }, 5000);
   }
 }
 
@@ -49,4 +49,4 @@ client.onload = function () {
 setInterval(function () {
   client.open('GET', url);
   client.send();
-}, 5000);
+}, 10000);
