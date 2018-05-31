@@ -2,9 +2,13 @@
 
 var client = new XMLHttpRequest();
 var channel = findGetParameter('channel');
-var url = '//somafm.com/songs/' + channel + '.xml';
+var duration = getInterval('duration');
+var interval = getInterval('interval');
 
-/* Processes response */
+/**
+ * @function
+ * @description Processes the incoming packet.
+ */
 client.onload = function () {
   if (client.readyState === client.DONE) {
     if (this.status === 200 && this.responseXML !== null) {
@@ -29,19 +33,24 @@ client.onload = function () {
         setTimeout(function () {
           /* Removes a pop-up window */
           displayElement.style['animation-name'] = 'fadeOut';
-        }, getInterval('duration'));
+        }, duration);
       }
     }
   }
 };
 
-/* Update cycle */
-setInterval(function () {
-  client.open('GET', url);
+/**
+ * @function
+ * @description Cyclical sending a request to update the information.
+ */
+setInterval(function tick() {
+  client.open('GET', '//somafm.com/songs/' + channel + '.xml');
   client.send();
-}, getInterval('interval'));
+  return tick;
+}(), interval);
 
 /**
+ * @function
  * @param {String} parameterName - Variable name
  * @returns {String} Value of variable
  * @description Searches for the value of the GET variable on the page.
@@ -62,6 +71,7 @@ function findGetParameter(parameterName) {
 }
 
 /**
+ * @function
  * @param {String} parameterName - Variable name
  * @returns {Number} Timer value, default 10 seconds
  * @description Gets the settings for the specified timer.
