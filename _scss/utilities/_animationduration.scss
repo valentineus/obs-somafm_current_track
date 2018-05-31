@@ -1,0 +1,14 @@
+// Animation Duration
+//
+// The animation-duration property defines duration of a single animation cycle.
+//
+// Values: <time>
+// Default: 0s
+//
+// https://www.w3.org/TR/css-animations-1/#animation-duration
+@mixin animation-duration($value: 0s) {
+  -webkit-animation-duration: $value;
+     -moz-animation-duration: $value;
+       -o-animation-duration: $value;
+          animation-duration: $value;
+}
